@@ -29,19 +29,21 @@ Feb. 20, 2016 - Mark Anton Mamac
                Login function
                Feb. 20, 2016
 
-               This is for getting the content of username and password input and user authentication. This function should link the user to the homepage of the application provided that the username and password combination exists in the database, otherwise, a popup windows will open notifying of incorrect combination. However this is still incomplete.
+               This is for getting the content of username and password input and user authentication. This function should link the user to the homepage of the application provided that the username and password combination exists in the database, otherwise, a popup window will open notifying of incorrect combination. However this is still incomplete.
 
                */
 
                function login(){
                     var usr=document.getElementById("username").value; //username input from the user
-                    var pass=document.getElementById("password").value; //password inut from the user
-                    if(usr.localeCompare("upbikeshare")==0 && pass.localeCompare("password")==0{
+                    var pass=document.getElementById("password").value; //password input from the user
+                    if(usr.localeCompare("upbikeshare")==0 && pass.localeCompare("password")==0){
                          alert("Login successful!");
                     }
+
                     else{
                          alert("Incorrect username and password combination!");
                     }
+
                     return false;
                }
           </script>
