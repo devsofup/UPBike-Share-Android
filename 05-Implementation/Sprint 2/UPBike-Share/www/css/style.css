@@ -1,4 +1,54 @@
-.backgroundCanvas{
+/*
+
+UP Bike Share - Android App
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2015-2016.
+
+Team S+: Steven Barrozo, Mark Anton Mamac, Jaypee Renz San Gabriel
+
+Screencast: https://youtu.be/Xg039MQwh8g
+
+The MIT License (MIT)
+
+Copyright (c) 2015 upbikeshareandroid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+
+/*
+
+Code History:
+
+Feb. 17, 2016 - Mark Anton Mamac
+->Background
+->Login screen
+
+*/
+
+
+/*
+Background of the app.
+*/
+
+/*Background*/
+.background{
      width: 100%;
      height: 100%;
      top: 0;
@@ -6,19 +56,23 @@
      bottom: 0;
      right: 0;
      position: fixed;
-     background-color: #be202d;
-     pointer-events: none;
+     background-color: #be202d
 }
 
+/*Splash screen logo*/
 .splashLogo{
      width: 60%;
      height: 45%;
      position: fixed;
      left: 20%;
      top: 25%;
-     pointer-events: none;
 }
 
+/*
+Login srcreen
+*/
+
+/*Popup window*/
 .popUp{
      height: 85%;
      width: 80%;
@@ -45,21 +99,25 @@
      -moz-animation-fill-mode: forwards;
 }
 
+/*Fade in animation of popup window*/
 @keyframes fadeIn{
-     from{opacity: 0; pointer-events: none;}
-     to{opacity: 1; pointer-events: auto;}
+     from{opacity: 0;}
+     to{opacity: 1;}
 }
 
+/*Webkit compatible of fade in animation*/
 @-webkit-keyframes fadeIn{
-     from{opacity: 0; pointer-events: none;}
-     to{opacity: 1; pointer-events: auto;}
+     from{opacity: 0;}
+     to{opacity: 1;}
 }
 
+/*Mozilla compatible fade in animation*/
 @-moz-keyframes fadeIn{
-     from{opacity: 0; pointer-events: none;}
-     to{opacity: 1; pointer-events: auto;}
+     from{opacity: 0;}
+     to{opacity: 1;}
 }
 
+/*UP Bike Share login logo*/
 .loginLogo{
      width: 80%;
      height: 50%;
@@ -68,6 +126,7 @@
      margin-bottom: 5%;
 }
 
+/*Login form. Includes the textboxes for username and password.*/
 .loginForm{
      width: 100%;
      height:30px;
@@ -84,6 +143,7 @@
      -moz-box-shadow: 2px 2px 3px #666;
 }
 
+/*Buttons on the login screen*/
 .loginButton{
      width: 40%;
      height: 30px;
@@ -96,9 +156,9 @@
      background: linear-gradient(bottom, #80161f, #be202d);
      background: -moz-linear-gradient(bottom, #80161f, #be202d);
      background: -webkit-linear-gradient(bottom, #80161f, #be202d);
-     -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-     border-radius: 10px;
+     -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+     border-radius: 5px;
      -webkit-box-shadow: 2px 2px 3px #666;
      -moz-box-shadow: 2px 2px 3px #666;
      box-shadow: 2px 2px 3px #666;

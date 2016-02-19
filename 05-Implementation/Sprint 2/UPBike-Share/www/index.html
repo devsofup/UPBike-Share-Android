@@ -1,24 +1,108 @@
-<!doctype html>
+<!--
+
+UP Bike Share - Android App
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2015-2016.
+
+Team S+: Steven Barrozo, Mark Anton Mamac, Jaypee Renz San Gabriel
+
+Screencast: https://youtu.be/Xg039MQwh8g
+
+The MIT License (MIT)
+
+Copyright (c) 2015 upbikeshareandroid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-->
+
+<!--
+
+Code History:
+
+Feb. 17, 2016 - Mark Anton Mamac
+->Login screen.
+
+Feb. 18, 2016 - Mark Anton Mamac
+->Code documentation and login function.
+
+-->
+
 <html>
      <head>
-          <title>Splash Screen</title>
+          <title>Login Screen</title>
           <script>
+
+               /*
+
+               Login function
+               Feb. 18, 2016
+
+               This is for getting the content of username and password input and user authentication. This function should link the user to the homepage of the application provided that the username and password combination exists in the database, otherwise, a popup window will open notifying of incorrect combination. However this is still incomplete.
+
+               */
+
                function login(){
-                    alert("Incorrect username and password combination!");
+                    var usr=document.getElementById("username").value; //username input from the user
+                    var pass=document.getElementById("password").value; //password input from the user
+                    if(usr.localeCompare("upbikeshare")==0 && pass.localeCompare("password")==0){
+                         alert("Login successful!");
+                    }
+
+                    else{
+                         alert("Incorrect username and password combination!");
+                    }
+
+                    return false;
                }
           </script>
      </head>
      <body>
+          <!--ionic css for preset designs-->
           <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+          <!--custom css for custom designs and positioning of the objects in html-->
           <link href="css/style.css" rel="stylesheet">
-          <div class="backgroundCanvas">
+
+          <!--background-->
+          <div class="background">
+
+               <!--UP Bike Share logo-->
                <img src="img/UPBS LOGO 3A.png" alt="UPBS Logo" class="splashLogo">
 
+               <!--Popup window login form-->
                <form class="popUp">
+
+                    <!--UP Bike Share logo for popup window-->
                     <img src="img/UPBS LOGO 1A.png" alt="UPBS Logo" class="loginLogo">
-                    <input type="text" name="username" placeholder="username" class="loginForm"></input>
-                    <input type="password" name="password" placeholder="password" class="loginForm"></input>
+
+                    <!--username input tag-->
+                    <input type="text" name="username" id="username" placeholder="username" class="loginForm"></input>
+
+                    <!--password input tag-->
+                    <input type="password" name="password" id="password" placeholder="password" class="loginForm"></input>
+
+                    <!--Login button-->
                     <input type="button" name="loginButton" value="Login" style="color:white;" onclick="login()" class="loginButton login">
+
+                    <!--Sign in  button-->
+                    <!--Note that this is just a nice to have feature of the application-->
                     <input type="button" name="signupButton" value="Sign Up" style="color:white;" onclick="" class="loginButton signup">
                </form>
           </div>
