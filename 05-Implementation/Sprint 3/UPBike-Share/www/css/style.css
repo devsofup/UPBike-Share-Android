@@ -1,0 +1,297 @@
+/*
+
+UP Bike Share - Android App
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2015-2016.
+
+Team S+: Steven Barrozo, Mark Anton Mamac, Jaypee Renz San Gabriel
+
+Screencast: https://youtu.be/Xg039MQwh8g
+
+The MIT License (MIT)
+
+Copyright (c) 2015 upbikeshareandroid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+
+/*
+
+Code History:
+
+February 17, 2016 - Mark Anton Mamac
+->Background
+->Login screen
+
+February 25, 2016 - Mark Anton Mamac
+->Home screen
+->Changed textbox and button layout.
+->General button and textbox class.
+
+*/
+
+
+/*Canvas*/
+.canvas{
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     position: fixed;
+     background-color: #be202d
+}
+
+/*Splash screen logo*/
+.splashLogo{
+     width: 60%;
+     height: 45%;
+     position: fixed;
+     left: 20%;
+     top: 25%;
+     opacity: 1;
+
+     animation: fadeOut 500ms;
+     animation-delay: 5s;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: fadeOut 500ms;
+     -webkit-animation-delay: 5s;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: fadeOut 500ms;
+     -moz-animation-delay: 5s;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Fade out animation of popup window*/
+@keyframes fadeOut{
+     from{opacity: 1;}
+     to{opacity: 0;}
+}
+
+/*Webkit compatible of fade out animation*/
+@-webkit-keyframes fadeOut{
+     from{opacity: 1;}
+     to{opacity: 0;}
+}
+
+/*Mozilla compatible fade out animation*/
+@-moz-keyframes fadeOut{
+     from{opacity: 1;}
+     to{opacity: 0;}
+}
+
+/*Button*/
+.button{
+     color: white;
+     background-color: #be202d;
+     border-style: solid;
+     border-width: 1px;
+     border-color: #be202d;
+     -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+     border-radius: 5px;
+}
+
+/*Textbox*/
+.textbox{
+     background-color: white;
+     border-style: solid;
+     border-width: 2px;
+     border-color: #be202d;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+}
+
+
+/*
+Login srcreen
+*/
+
+/*Popup window*/
+.loginPopUp{
+     top: 10%;
+     left: 10%;
+     right: 10%;
+     bottom: 10%;
+     padding: 10%;
+     border-radius: 10px;
+     background: #ffffff;
+     box-shadow: 2px 2px 3px #666;
+     -webkit-box-shadow: 2px 2px 3px #666;
+     -moz-box-shadow: 2px 2px 3px #666;
+     opacity: 0;
+     position: fixed;
+
+     animation: fadeIn 500ms;
+     animation-delay: 5s;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: fadeIn 500ms;
+     -webkit-animation-delay: 5s;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: fadeIn 500ms;
+     -moz-animation-delay: 5s;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Fade in animation of popup window*/
+@keyframes fadeIn{
+     from{opacity: 0;}
+     to{opacity: 1;}
+}
+
+/*Webkit compatible of fade in animation*/
+@-webkit-keyframes fadeIn{
+     from{opacity: 0;}
+     to{opacity: 1;}
+}
+
+/*Mozilla compatible fade in animation*/
+@-moz-keyframes fadeIn{
+     from{opacity: 0;}
+     to{opacity: 1;}
+}
+
+/*UP Bike Share login logo*/
+.loginLogo{
+     width: 80%;
+     height: 50%;
+     left: 10%;
+     position: relative;
+     margin-bottom: 5%;
+     opacity: 1;
+}
+
+/*Login form. Includes the textboxes for username and password.*/
+.loginForm{
+     width: 100%;
+     height:30px;
+     position: relative;
+     margin-top: 5%;
+     margin-bottom: 5%;
+     opacity: 1;
+}
+
+/*Buttons on the login screen*/
+.loginButton{
+     width: 40%;
+     height: 30px;
+     left: 10%;
+     position: relative;
+     margin-top: 10%;
+     opacity: 1;
+}
+
+/*
+Home Screen
+*/
+
+/*Menu bar*/
+.menuBar{
+     width: 100%;
+     height: 13%;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     position: fixed;
+     background-color: white;
+}
+
+/* Menu bar icons*/
+.menuBarIcon{
+     width: 13%;
+     height: 80%;
+     top: 10%;
+     bottom: 10%;
+     position: absolute;
+}
+
+/*Menu bar home icon*/
+.homeIcon{
+     left: 5.833%;
+}
+
+/*Menu bar bike icon*/
+.bikeIcon{
+     left: 24.666%;
+}
+
+/*Menu bar settings icon*/
+.settingsIcon{
+     left: 43.499%;
+}
+
+/*Menu bar report icon*/
+.reportIcon{
+     left: 62.332%;
+}
+
+/*Menu bar exit icon*/
+.exitIcon{
+     left: 81.165%;
+}
+
+/*UP Diliman map*/
+.map{
+     width: 80%;
+     height: 80%;
+     top: 4%;
+     left: 10%;
+     right: 10%;
+     bottom: 16%;
+     position: relative;
+     border-radius: 15px;
+     -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+}
+
+/*
+Report Screen
+*/
+/*Report screen canvas*/
+.reportCanvas{
+     background-color: white;
+     padding: 10%;
+}
+
+.bikeNumberTextbox{
+     height: 30px;
+     width: 80%;
+     left: 10%;
+}
+
+.issueTextbox{
+     height: 35%;
+     width: 80%;
+     left: 10%;
+}
+
+.reportSubmit{
+     width: 30%;
+     height: 30px;
+     top: 5%;
+     left: 50%;
+     position: relative;
+}

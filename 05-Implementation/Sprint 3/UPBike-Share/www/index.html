@@ -36,10 +36,10 @@ SOFTWARE.
 
 Code History:
 
-Feb. 17, 2016 - Mark Anton Mamac
-->Login screen.
+February 17, 2016 - Mark Anton Mamac
+->Login screen UI.
 
-Feb. 18, 2016 - Mark Anton Mamac
+February 18, 2016 - Mark Anton Mamac
 ->Code documentation and login function.
 
 -->
@@ -63,6 +63,7 @@ Feb. 18, 2016 - Mark Anton Mamac
                     var pass=document.getElementById("password").value; //password input from the user
                     if(usr.localeCompare("upbikeshare")==0 && pass.localeCompare("password")==0){
                          alert("Login successful!");
+                         location.href="home.html";
                     }
 
                     else{
@@ -75,36 +76,36 @@ Feb. 18, 2016 - Mark Anton Mamac
      </head>
      <body>
           <!--ionic css for preset designs-->
-          <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+          <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
 
           <!--custom css for custom designs and positioning of the objects in html-->
           <link href="css/style.css" rel="stylesheet">
 
-          <!--background-->
-          <div class="background">
+          <!--canvas-->
+          <div class="canvas">
 
                <!--UP Bike Share logo-->
                <img src="img/UPBS LOGO 3A.png" alt="UPBS Logo" class="splashLogo">
 
                <!--Popup window login form-->
-               <form class="popUp">
+               <div class="loginPopUp">
 
                     <!--UP Bike Share logo for popup window-->
                     <img src="img/UPBS LOGO 1A.png" alt="UPBS Logo" class="loginLogo">
 
                     <!--username input tag-->
-                    <input type="text" name="username" id="username" placeholder="username" class="loginForm"></input>
+                    <input type="text" name="username" id="username" placeholder="username" class="textbox loginForm">
 
                     <!--password input tag-->
-                    <input type="password" name="password" id="password" placeholder="password" class="loginForm"></input>
+                    <input type="password" name="password" id="password" placeholder="password" class="textbox loginForm">
 
                     <!--Login button-->
-                    <input type="button" name="loginButton" value="Login" style="color:white;" onclick="login()" class="loginButton login">
+                    <input type="button" name="loginButton" value="Login" onclick="login()" class="button loginButton">
 
                     <!--Sign in  button-->
                     <!--Note that this is just a nice to have feature of the application-->
-                    <input type="button" name="signupButton" value="Sign Up" style="color:white;" onclick="" class="loginButton signup">
-               </form>
+                    <input type="button" name="signupButton" value="Sign Up" onclick="" class="button loginButton">
+               </div>
           </div>
      </body>
 </html>
