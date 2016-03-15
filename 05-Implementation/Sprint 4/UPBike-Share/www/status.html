@@ -36,38 +36,14 @@ SOFTWARE.
 
 Code History:
 
-February 25, 2016 - Mark Anton Mamac
-->Report Screen UI
-
-March 10, 2016 - Mark Anton Mamac
-->Fixed alignment
-->Changed color of menu bar to #be202d
-
-March 11, 2016 - Mark Anton Mamac
-->Reverted menu bar color
-->3px border line to separate menu bar from report section
-
 March 2016 - Mark Anton Mamac
-->Removed settings icon
-->submit() template
 
 -->
 
 <html>
      <head>
-          <title>Report Screen</title>
+          <title>User Status Screen</title>
           <script>
-               /*
-               submit() function
-               March 2016
-
-               Submits the content of the report input
-               */
-               function submit(){
-                    var bikeNumber=document.getElementById("bikeNumber").value;
-                    var issue=document.getElementById("issue").value;
-                    /*submit this values*/
-               }
           </script>
      </head>
      <body>
@@ -79,20 +55,8 @@ March 2016 - Mark Anton Mamac
 
           <!--canvas-->
           <div class="canvas reportCanvas">
-               <!--Report header-->
-               <h1 class="header">Report an issue</h1>
-               <!--Bike number text-->
-               <p class="pNoMargin">Bike Number:</p>
-               <!--Bike number textbox-->
-               <input type="text" id="bikeNumber" class="textbox bikeNumberTextbox">
-               <!--Issue text-->
-               <p class="pNoMargin">Issue:</p>
-               <!--Issue textbox-->
-               <input type="text" id="issue" class="textbox issueTextbox">
-               <!--Submit button-->
-               <input type="button" value="Submit" class="button reportSubmit" onclick="submit()">
                <!--Menu bar-->
-               <div class="menuBar reportMenuBar">
+               <div class="menuBar">
                     <!---Home button-->
                     <a href="home.html"><img src="img/home.png" alt="Home Icon" class="menuBarIcon homeIcon"></a>
                     <!--Bike info button-->
