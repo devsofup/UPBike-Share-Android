@@ -53,6 +53,10 @@ March 11, 2016 - Mark Anton Mamac
 ->Station icons
 ->Completion of home screen UI
 
+March 2016 - Mark Anton Mamac
+->Deleted loginPopUp
+->Fixed pointer-events bug
+
 */
 
 
@@ -75,37 +79,6 @@ March 11, 2016 - Mark Anton Mamac
      position: fixed;
      left: 20%;
      top: 25%;
-     opacity: 1;
-
-     animation: splashFadeOut 500ms;
-     animation-delay: 5s;
-     animation-fill-mode: forwards;
-
-     -webkit-animation: splashFadeOut 500ms;
-     -webkit-animation-delay: 5s;
-     -webkit-animation-fill-mode: forwards;
-
-     -moz-animation: splashFadeOut 500ms;
-     -moz-animation-delay: 5s;
-     -moz-animation-fill-mode: forwards;
-}
-
-/*Fade out animation of popup window*/
-@keyframes splashFadeOut{
-     from{opacity: 1;}
-     to{opacity: 0;}
-}
-
-/*Webkit compatible of fade out animation*/
-@-webkit-keyframes splashFadeOut{
-     from{opacity: 1;}
-     to{opacity: 0;}
-}
-
-/*Mozilla compatible fade out animation*/
-@-moz-keyframes splashFadeOut{
-     from{opacity: 1;}
-     to{opacity: 0;}
 }
 
 /*Pop-up*/
@@ -117,8 +90,106 @@ March 11, 2016 - Mark Anton Mamac
      padding: 10%;
      border-radius: 10px;
      background: #ffffff;
-     opacity: 0;
      position: fixed;
+}
+
+/*Change opacity to 1*/
+.changeOpacity1{
+     animation: popUpFadeIn 200ms;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: popUpFadeIn 200ms;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: popUpFadeIn 200ms;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Change opacity to 0*/
+.changeOpacity0{
+     animation: popUpFadeOut 200ms;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: popUpFadeOut 200ms;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: popUpFadeOut 200ms;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Change opacity to 1*/
+.loginChangeOpacity1{
+     animation: popUpFadeIn 500ms;
+     animation-delay: 5s;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: popUpFadeIn 500ms;
+     -webkit-animation-delay: 5s;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: popUpFadeIn 500ms;
+     -moz-animation-delay: 5s;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Fade in animation of popup window*/
+@keyframes popUpFadeIn{
+     from{
+          opacity: 0;
+     }
+     to{
+          opacity: 1;
+     }
+}
+
+/*Webkit compatible of fade in animation*/
+@-webkit-keyframes popUpFadeIn{
+     from{
+          opacity: 0;
+     }
+     to{
+          opacity: 1;
+     }
+}
+
+/*Mozilla compatible fade in animation*/
+@-moz-keyframes popUpFadeIn{
+     from{
+          opacity: 0;
+     }
+     to{
+          opacity: 1;
+     }
+}
+
+/*Fade out animation of popup window*/
+@keyframes popUpFadeOut{
+     from{
+          opacity: 1;
+     }
+     to{
+          opacity: 0;
+     }
+}
+
+/*Webkit compatible of fade out animation*/
+@-webkit-keyframes popUpFadeOut{
+     from{
+          opacity: 1;
+     }
+     to{
+          opacity: 0;
+     }
+}
+
+/*Mozilla compatible fade out animation*/
+@-moz-keyframes popUpFadeOut{
+     from{
+          opacity: 1;
+     }
+     to{
+          opacity: 0;
+     }
 }
 
 /*Button*/
@@ -174,38 +245,10 @@ March 11, 2016 - Mark Anton Mamac
 Login srcreen
 */
 
-/*Popup window*/
+/*Login popup*/
 .loginPopUp{
-     position: fixed;
-     animation: loginFadeIn 500ms;
-     animation-delay: 5s;
-     animation-fill-mode: forwards;
-
-     -webkit-animation: loginFadeIn 500ms;
-     -webkit-animation-delay: 5s;
-     -webkit-animation-fill-mode: forwards;
-
-     -moz-animation: loginFadeIn 500ms;
-     -moz-animation-delay: 5s;
-     -moz-animation-fill-mode: forwards;
-}
-
-/*Fade in animation of popup window*/
-@keyframes loginFadeIn{
-     from{opacity: 0;}
-     to{opacity: 1;}
-}
-
-/*Webkit compatible of fade in animation*/
-@-webkit-keyframes loginFadeIn{
-     from{opacity: 0;}
-     to{opacity: 1;}
-}
-
-/*Mozilla compatible fade in animation*/
-@-moz-keyframes loginFadeIn{
-     from{opacity: 0;}
-     to{opacity: 1;}
+     opacity: 0;
+     pointer-events: none;
 }
 
 /*UP Bike Share login logo*/
@@ -267,27 +310,22 @@ Menu Bar
 
 /*Menu bar home icon*/
 .homeIcon{
-     left: 5.833%;
+     left: 9.6%;
 }
 
 /*Menu bar bike icon*/
 .bikeIcon{
-     left: 24.666%;
-}
-
-/*Menu bar settings icon*/
-.settingsIcon{
-     left: 43.499%;
+     left: 32.2%;
 }
 
 /*Menu bar report icon*/
 .reportIcon{
-     left: 62.332%;
+     left: 54.8%;
 }
 
 /*Menu bar exit icon*/
 .exitIcon{
-     left: 81.165%;
+     left: 77.4%;
 }
 
 /*
@@ -389,66 +427,6 @@ Home Screen
      pointer-events: none;
 }
 
-/*Change opacity to 1*/
-.changeOpacity1{
-     animation: popUpFadeOut 200ms;
-     animation-fill-mode: forwards;
-
-     -webkit-animation: popUpFadeOut 200ms;
-     -webkit-animation-fill-mode: forwards;
-
-     -moz-animation: popUpFadeOut 200ms;
-     -moz-animation-fill-mode: forwards;
-}
-
-/*Change opacity to 0*/
-.changeOpacity0{
-     animation: popUpFadeOut 200ms;
-     animation-fill-mode: forwards;
-
-     -webkit-animation: popUpFadeOut 200ms;
-     -webkit-animation-fill-mode: forwards;
-
-     -moz-animation: popUpFadeOut 200ms;
-     -moz-animation-fill-mode: forwards;
-}
-
-/*Fade in animation of popup window*/
-@keyframes popUpFadeIn{
-     from{opacity: 0; pointer-events: none;}
-     to{opacity: 1; pointer-events: auto;}
-}
-
-/*Webkit compatible of fade in animation*/
-@-webkit-keyframes popUpFadeIn{
-     from{opacity: 0; pointer-events: none;}
-     to{opacity: 1; pointer-events: auto;}
-}
-
-/*Mozilla compatible fade in animation*/
-@-moz-keyframes popUpFadeIn{
-     from{opacity: 0; pointer-events: none;}
-     to{opacity: 1; pointer-events: auto;}
-}
-
-/*Fade out animation of popup window*/
-@keyframes popUpFadeOut{
-     from{opacity: 1; pointer-events: auto;}
-     to{opacity: 0; pointer-events: none;}
-}
-
-/*Webkit compatible of fade out animation*/
-@-webkit-keyframes popUpFadeOut{
-     from{opacity: 1; pointer-events: auto;}
-     to{opacity: 0; pointer-events: none;}
-}
-
-/*Mozilla compatible fade out animation*/
-@-moz-keyframes popUpFadeOut{
-     from{opacity: 1; pointer-events: auto;}
-     to{opacity: 0; pointer-events: none;}
-}
-
 /*Station name for pop-up window*/
 .popUpStationName{
      font-family: "Quicksand";
@@ -529,6 +507,13 @@ Home Screen
      top: 60%;
      position: absolute;
      border-radius: 15px;
+}
+
+/*User Status Screen*/
+/*Status screen canvas*/
+.statusCanvas{
+     background-color: white;
+     padding: 5%;
 }
 
 /*

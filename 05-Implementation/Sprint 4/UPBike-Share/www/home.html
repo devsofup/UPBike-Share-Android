@@ -43,12 +43,101 @@ March 11, 2016 - Mark Anton Mamac
 ->Placement of station icons
 ->Complete Home Screen UI with popups fo station icons
 
+March 2016- Mark Anton Mamac
+->Removed settings icon
+->Script for popup animations
+->Template for scripts
+
 -->
 
 <html>
      <head>
           <title>Home Screen</title>
           <script>
+               /*
+               iconClick() function
+               March 2016
+
+               Function for displaying reservation popup. Receives reference to function caller for station name.
+               */
+               function iconClick(icon){
+                    /*change the station name based on the clicked icon*/
+                    var stationName=document.getElementById("popUpStationName");
+                    stationName.innerHTML=icon.name;
+
+                    /*get the number of bikes available from the database*/
+                    /*
+                    var availableBike=...
+                    var bikeNumber=document.getElementById("bikeNumber");
+                    bikeNumber.innerHTML=availableBike;
+                    */
+
+
+                    /*If there is no reserved bike show the reservation popup*/
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity1";
+                    document.getElementById("reservePopUp").style.pointerEvents="auto";
+
+                    /*Else if there is a reserved bike but the destination is not yet locked, show the destination popup*/
+                    /*
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity1";
+                    document.getElementById("reservePopUp").style.pointerEvents="auto";
+                    */
+               }
+
+               /*
+               reserve() function
+               March 2016
+
+               Saves the reservation location.
+               */
+               function reserve(){
+                    /*station name*/
+                    var stationName=document.getElementById("reservePopUp").popUpStationName;
+                    /*insert reservation code here*/
+
+                    /*hide reserve popup*/
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity0";
+               }
+
+               /*
+               rcancel() function
+               March 2016
+
+               Hides the reservation popup.
+               */
+               function rcancel(){
+                    /*hide reserve popup*/
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity0";
+                    document.getElementById("reservePopUp").style.pointerEvents="none";
+               }
+
+               /*
+               lock() function
+               March 2016
+
+               Saves the destination location then completes the reservation using the reservation and destination location and then submit them to server.
+               */
+               function lock(){
+                    /*station name*/
+                    var stationName=document.getElementById("destinationPopUp").popUpStationName;
+
+                    /*insert lock code here*/
+
+                    /*hide reserve popup*/
+                    document.getElementById("destinationPopUp").className="popUp homePopUp changeOpacity0";
+               }
+
+               /*
+               dcancel() function
+               March 2016
+
+               Hides destination popup.
+               */
+               function dcancel(){
+                    /*hide reserve popup*/
+                    document.getElementById("destinationPopUp").className="popUp homePopUp changeOpacity0";
+                    document.getElementById("destinationPopUp").style.pointerEvents="none";
+               }
           </script>
      </head>
      <body>
@@ -65,67 +154,65 @@ March 11, 2016 - Mark Anton Mamac
                     <img src="img/map.png" alt="UPD Map" class="map">
                     <!--You may use the id as a parameter for reservation and destination function (choose depending on the state of the current user).-->
                     <!--Vinzon's Hall station icon-->
-                    <img src="img/stationIcon.png" id="Vinzon Station" alt="Vinzon Station" class="stationIcon vinzonIcon" onclick="">
+                    <img src="img/stationIcon.png" name="VINZON'S STATION" alt="Vinzon's Station" class="stationIcon vinzonIcon" onclick="iconClick(this)">
                     <!--DCS station icon-->
-                    <img src="img/stationIcon.png" id="DCS Station" alt="DCS Station" class="stationIcon dcsIcon" onclick="">
+                    <img src="img/stationIcon.png" name="DCS STATION" alt="DCS Station" class="stationIcon dcsIcon" onclick="iconClick(this)">
                     <!--Math station icon-->
-                    <img src="img/stationIcon.png" id="Math Station" alt="Math Station" class="stationIcon mathIcon" onclick="">
+                    <img src="img/stationIcon.png" name="MATH STATION" alt="Math Station" class="stationIcon mathIcon" onclick="iconClick(this)">
                     <!--AS station icon-->
-                    <img src="img/stationIcon.png" id="AS Station" alt="AS Station" class="stationIcon asIcon" onclick="">
+                    <img src="img/stationIcon.png" name="AS STATION" alt="AS Station" class="stationIcon asIcon" onclick="iconClick(this)">
                     <!--Melchor Hall station icon-->
-                    <img src="img/stationIcon.png" id="Engg Station" alt="Engg Station" class="stationIcon enggIcon" onclick="">
+                    <img src="img/stationIcon.png" name="ENG'G STATION" alt="Eng'g Station" class="stationIcon enggIcon" onclick="iconClick(this)">
                     <!--CHK station icon-->
-                    <img src="img/stationIcon.png" id="CHK Station" alt="CHK Station" class="stationIcon chkIcon" onclick="">
+                    <img src="img/stationIcon.png" name="CHK STATION" alt="CHK Station" class="stationIcon chkIcon" onclick="iconClick(this)">
                     <!--CMC station icon-->
-                    <img src="img/stationIcon.png" id="CMC Station" alt="CMC Station" class="stationIcon cmcIcon" onclick="">
+                    <img src="img/stationIcon.png" name="CMC STATION" alt="CMC Station" class="stationIcon cmcIcon" onclick="iconClick(this)">
                </div>
 
                <!--Menu bar-->
                <div class="menuBar">
                     <!---Home button-->
-                    <a href="home.html"><img src="img/home.png" alt="Home Icon" class="menuBarIcon homeIcon" onclick=""></a>
+                    <a href="home.html"><img src="img/home.png" alt="Home Icon" class="menuBarIcon homeIcon"></a>
                     <!--Bike info button-->
-                    <a href=""><img src="img/bike.png" alt="Bike Icon" class="menuBarIcon bikeIcon" onclick=""></a>
-                    <!--Settings button-->
-                    <a href=""><img src="img/settings.png" alt="Settings Icon" class="menuBarIcon settingsIcon" onclick=""></a>
+                    <a href="status.html"><img src="img/bike.png" alt="Bike Icon" class="menuBarIcon bikeIcon"></a>
                     <!--Report button-->
-                    <a href="report.html"><img src="img/report.png" alt="Report Icon" class="menuBarIcon reportIcon" onclick=""></a>
+                    <a href="report.html"><img src="img/report.png" alt="Report Icon" class="menuBarIcon reportIcon"></a>
                     <!--Exit button-->
-                    <a href="index.html"><img src="img/exit.png"  alt="Exit Icon" class="menuBarIcon exitIcon" onclick=""></a>
+                    <a href="index.html"><img src="img/exit.png"  alt="Exit Icon" class="menuBarIcon exitIcon"></a>
                </div>
 
-               <!--Please create a script that will check the current status of the user (no reservation, with reservation but not locked, with reservation and locked) when the user tapped one of the station icons. Use the changeOpacity1 and changeOpacity0 to change the visibility of pop-ups that we have to show according to user status-->
+               <!--Please create a script that will check the current status of the user (no reservation, with reservation but not locked, with reservation and locked) when the user tapped one of the station icons.-->
 
-               <div class="popUp homePopUp">
-                    <!--We need script to display the station name of the clicked icon and the number of bikes available-->
+               <!--Reservation popup-->
+               <div id="reservePopUp" class="popUp homePopUp">
                     <!--Station name-->
-                    <p class="popUpStationName">Vinzon's Hall</p>
+                    <p id="popUpStationName" class="popUpStationName"></p>
                     <!--Horizontal line-->
                     <div class="horizontalLine stationNameHL">
                     </div>
                     <!--Number of bike available-->
-                    <p class="pNoMargin popUpBikeAvailable">3</p>
+                    <p id="bikeNumber" class="pNoMargin popUpBikeAvailable">3</p>
                     <!--"Available"-->
                     <p class="pNoMargin popUpAvailable">Available</p>
                     <!--Horizontal line-->
                     <div class="horizontalLine reserveHL">
                     </div>
                     <!--Reserve button-->
-                    <input type="button" name="reserveButton" value="Reserve" onclick="" class="button reserveButton">
+                    <input type="button" name="reserveButton" value="Reserve" onclick="reserve()" class="button reserveButton">
                     <!--Cancel button-->
-                    <input type="button" name="cancelButton" value="Cancel" onclick="" class="button rCancelButton">
+                    <input type="button" name="cancelButton" value="Cancel" onclick="rcancel()" class="button rCancelButton">
                </div>
 
-               <div class="popUp homePopUp">
-                    <!--We need script to display the station name of the clicked icon-->
-                    <p class="popUpStationName">Vinzon's Hall</p>
+               <!--Destination popup-->
+               <div id="destinationPopUp" class="popUp homePopUp">
+                    <p id="popUpStationName" class="popUpStationName"></p>
                     <!--Horizontal line-->
                     <div class="horizontalLine stationNameHL">
                     </div>
                     <!--Destination lock button-->
-                    <input type="button" name="destinationButton" value="Set Destination" onclick="" class="button destinationButton">
+                    <input type="button" name="destinationButton" value="Set Destination" onclick="lock()" class="button destinationButton">
                     <!--Cancel button-->
-                    <input type="button" name="cancelButton" value="Cancel" onclick="" class="button dCancelButton">
+                    <input type="button" name="cancelButton" value="Cancel" onclick="dcancel()" class="button dCancelButton">
                </div>
           </div>
      </body>

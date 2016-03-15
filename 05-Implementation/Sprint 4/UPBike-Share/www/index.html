@@ -42,6 +42,10 @@ February 17, 2016 - Mark Anton Mamac
 February 18, 2016 - Mark Anton Mamac
 ->Code documentation and hard coded login function.
 
+March 2016 - Mark Anton Mamac
+->Script for popup animation
+->Template for scripts
+
 -->
 
 <html>
@@ -50,17 +54,35 @@ February 18, 2016 - Mark Anton Mamac
           <script>
 
                /*
+               check() Function
+               March 2016
 
-               Login function
+               Use this as a body onload function. This function is to check if the user has to login his account. Show the login popup if it's the user's first time to login, if not, redirect to homepage.
+               */
+
+               function check(){
+                    /*if it is the user's first time, show the login popup*/
+                    document.getElementById("loginPopUp").className="popUp loginPopUp loginChangeOpacity1";
+                    document.getElementById("loginPopUp").style.pointerEvents="auto";
+                    /*else automatically login and load the home page*/
+                    /*login(usr, pass);*/
+               }
+
+               /*
+
+               login() function
                Feb. 18, 2016
 
                This is for getting the content of username and password input and user authentication. This function should link the user to the homepage of the application provided that the username and password combination exists in the database, otherwise, a popup window will open notifying of incorrect combination. However this is still incomplete.
 
                */
 
-               function login(){
-                    var usr=document.getElementById("username").value; //username input from the user
-                    var pass=document.getElementById("password").value; //password input from the user
+               function login(usr, pass){
+                    /*username input from the user*/
+                    var usr=document.getElementById("username").value;
+                    /*password input from the user*/
+                    var pass=document.getElementById("password").value;
+                    /*hardcoded, please modify this part*/
                     if(usr.localeCompare("upbikeshare")==0 && pass.localeCompare("password")==0){
                          alert("Login successful!");
                          location.href="home.html";
@@ -74,7 +96,7 @@ February 18, 2016 - Mark Anton Mamac
                }
           </script>
      </head>
-     <body>
+     <body onload="check()">
           <!--ionic css for preset designs-->
           <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
 
@@ -88,23 +110,23 @@ February 18, 2016 - Mark Anton Mamac
                <img src="img/UPBS LOGO 3A.png" alt="UPBS Logo" class="splashLogo">
 
                <!--Popup window login form-->
-               <div class="popUp loginPopUp">
+               <div id="loginPopUp" class="popUp loginPopUp">
 
                     <!--UP Bike Share logo for popup window-->
                     <img src="img/UPBS LOGO 1A.png" alt="UPBS Logo" class="loginLogo">
 
-                    <!--username input tag-->
-                    <input type="text" name="username" id="username" placeholder="username" value="upbikeshare" class="textbox loginForm">
+                    <!--Username input tag-->
+                    <input type="text" id="username" placeholder="username" value="upbikeshare" class="textbox loginForm">
 
-                    <!--password input tag-->
-                    <input type="password" name="password" id="password" placeholder="password" value="password" class="textbox loginForm">
+                    <!--Password input tag-->
+                    <input type="password" id="password" placeholder="password" value="password" class="textbox loginForm">
 
                     <!--Login button-->
-                    <input type="button" name="loginButton" value="Login" onclick="login()" class="button loginButton">
+                    <input type="button" value="Login" onclick="login()" class="button loginButton">
 
                     <!--Sign in  button-->
                     <!--Note that this is just a nice to have feature of the application-->
-                    <input type="button" name="signupButton" value="Sign Up" onclick="" class="button loginButton">
+                    <input type="button" value="Sign Up" onclick="" class="button loginButton">
                </div>
           </div>
      </body>
