@@ -1,0 +1,713 @@
+/*
+
+UP Bike Share - Android App
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2015-2016.
+
+Team S+: Steven Barrozo, Mark Anton Mamac, Jaypee Renz San Gabriel
+
+Screencast: https://youtu.be/Xg039MQwh8g
+
+The MIT License (MIT)
+
+Copyright (c) 2015 upbikeshareandroid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+
+/*
+
+Code History:
+
+February 17, 2016 - Mark Anton Mamac
+->Background
+->Login screen
+
+February 25, 2016 - Mark Anton Mamac
+->Home screen
+->Changed textbox and button layout
+->General button and textbox class
+
+March 10, 2016 - Mark Anton Mamac
+->Fixed report screen alignment
+
+March 11, 2016 - Mark Anton Mamac
+->Home screen popups and animations
+->Station icons
+->Completion of home screen UI
+
+March 16, 2016 - Mark Anton Mamac
+->Deleted loginPopUp
+->Fixed pointer-events bug
+
+March 26, 2016 - Mark Anton Mamac
+->Status screen
+->Changed colors for report screen
+->Additional station icons
+
+*/
+
+
+/*Canvas*/
+.canvas{
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     position: fixed;
+     background-color: #be202d
+}
+
+/*Splash screen logo*/
+.splashLogo{
+     width: 60%;
+     height: 45%;
+     position: fixed;
+     left: 20%;
+     top: 25%;
+}
+
+/*Pop-up*/
+.popUp{
+     top: 10%;
+     left: 10%;
+     right: 10%;
+     bottom: 10%;
+     padding: 10%;
+     border-radius: 10px;
+     background: #ffffff;
+     position: fixed;
+}
+
+/*Change opacity to 1*/
+.changeOpacity1{
+     animation: popUpFadeIn 200ms;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: popUpFadeIn 200ms;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: popUpFadeIn 200ms;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Change opacity to 0*/
+.changeOpacity0{
+     animation: popUpFadeOut 200ms;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: popUpFadeOut 200ms;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: popUpFadeOut 200ms;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Change opacity to 1*/
+.loginChangeOpacity1{
+     animation: popUpFadeIn 500ms;
+     animation-delay: 5s;
+     animation-fill-mode: forwards;
+
+     -webkit-animation: popUpFadeIn 500ms;
+     -webkit-animation-delay: 5s;
+     -webkit-animation-fill-mode: forwards;
+
+     -moz-animation: popUpFadeIn 500ms;
+     -moz-animation-delay: 5s;
+     -moz-animation-fill-mode: forwards;
+}
+
+/*Fade in animation of popup window*/
+@keyframes popUpFadeIn{
+     from{
+          opacity: 0;
+     }
+     to{
+          opacity: 1;
+     }
+}
+
+/*Webkit compatible of fade in animation*/
+@-webkit-keyframes popUpFadeIn{
+     from{
+          opacity: 0;
+     }
+     to{
+          opacity: 1;
+     }
+}
+
+/*Mozilla compatible fade in animation*/
+@-moz-keyframes popUpFadeIn{
+     from{
+          opacity: 0;
+     }
+     to{
+          opacity: 1;
+     }
+}
+
+/*Fade out animation of popup window*/
+@keyframes popUpFadeOut{
+     from{
+          opacity: 1;
+     }
+     to{
+          opacity: 0;
+     }
+}
+
+/*Webkit compatible of fade out animation*/
+@-webkit-keyframes popUpFadeOut{
+     from{
+          opacity: 1;
+     }
+     to{
+          opacity: 0;
+     }
+}
+
+/*Mozilla compatible fade out animation*/
+@-moz-keyframes popUpFadeOut{
+     from{
+          opacity: 1;
+     }
+     to{
+          opacity: 0;
+     }
+}
+
+/*Button*/
+.button{
+     color: #ffffff;
+     background-color: #be202d;
+     border-style: solid;
+     border-width: 2px;
+     border-color: #be202d;
+     -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+     border-radius: 5px;
+}
+
+/*Textbox*/
+.textbox{
+     background-color: white;
+     border-style: solid;
+     border-width: 2px;
+     border-color: #be202d;
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+}
+
+/*Header*/
+.header{
+     font-family: "Quicksand";
+     font-weight: bold;
+     color: #ffffff;
+}
+
+/*Paragraph with no margin and padding*/
+.pNoMargin{
+     margin: 0px;
+     padding: 0px;
+}
+
+/*Removed focus outline*/
+*:focus{
+     outline: none;
+}
+
+/*Horizontal line*/
+.horizontalLine{
+     width: 100%;
+     height: 3px;
+     background-color: #be202d
+}
+
+
+/*
+Login srcreen
+*/
+
+/*Login popup*/
+.loginPopUp{
+     opacity: 0;
+     pointer-events: none;
+}
+
+/*UP Bike Share login logo*/
+.loginLogo{
+     width: 80%;
+     height: 50%;
+     left: 10%;
+     position: relative;
+     margin-bottom: 5%;
+     opacity: 1;
+}
+
+/*Login form. Includes the textboxes for username and password.*/
+.loginForm{
+     width: 100%;
+     position: relative;
+     margin-top: 5%;
+     margin-bottom: 5%;
+     opacity: 1;
+}
+
+/*Buttons on the login screen*/
+.loginButton{
+     width: 40%;
+     height: 30px;
+     left: 10%;
+     position: relative;
+     border-radius: 30px;
+     margin-top: 10%;
+     opacity: 1;
+}
+
+/*
+Menu Bar
+*/
+.menuBar{
+     width: 100%;
+     height: 13%;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     position: fixed;
+     background-color: white;
+     border-top-width: 3px;
+     border-left-width: 0px;
+     border-right-width: 0px;
+     border-bottom-width: 0px;
+     border-color: #be202d;
+     border-style: solid;
+}
+
+/* Menu bar icons*/
+.menuBarIcon{
+     width: 13%;
+     height: 80%;
+     top: 10%;
+     bottom: 10%;
+     position: absolute;
+}
+
+/*Menu bar home icon*/
+.homeIcon{
+     left: 9.6%;
+}
+
+/*Menu bar bike icon*/
+.bikeIcon{
+     left: 32.2%;
+}
+
+/*Menu bar report icon*/
+.reportIcon{
+     left: 54.8%;
+}
+
+/*Menu bar exit icon*/
+.exitIcon{
+     left: 77.4%;
+}
+
+/*
+Home Screen
+*/
+
+/*Map div*/
+.mapDiv{
+     width: 80%;
+     height: 80%;
+     top: 4%;
+     left: 10%;
+     right: 10%;
+     bottom: 16%;
+     position: absolute;
+}
+
+/*UP Diliman Map*/
+.map{
+     width: 100%;
+     height: 100%;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     position: absolute;
+     border-radius: 15px;
+     -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+}
+
+/*Station icon*/
+.stationIcon{
+     width: 7%;
+     height: 5%;
+}
+
+/*AS station icon*/
+.asIcon{
+     top: 30%;
+     left: 43%;
+     position: absolute;
+}
+
+/*CAL station icon*/
+.calIcon{
+     top: 40%;
+     left: 43%;
+     position:absolute;
+}
+
+/*Chem station icon*/
+.chemIcon{
+     top: 10%;
+     left: 65%;
+     position:absolute;
+}
+
+/*CHK station icon*/
+.chkIcon{
+     top: 67%;
+     left:5%;
+     position: absolute;
+}
+
+/*Engg station icon*/
+.enggIcon{
+     top: 30%;
+     left: 16%;
+     position: absolute;
+}
+
+/*EnggLib2 station icon*/
+.enggLib2Icon{
+     top: 37%;
+     left: 75%;
+     position: absolute;
+}
+
+/*Fine Arts station icon*/
+.fineArtsIcon{
+     top: 76%;
+     left: 55%;
+     position:absolute;
+}
+
+/*Marine Science station icon*/
+.marineScienceIcon{
+     top: 30%;
+     left: 60%;
+     position:absolute;
+}
+
+/*Math station icon*/
+.mathIcon{
+     top: 25%;
+     left: 77%;
+     position: absolute;
+}
+
+/*Music station icon*/
+.musicIcon{
+     top: 55%;
+     left: 16%;
+     position:absolute;
+}
+
+/*NCPAG station icon*/
+.ncpagIcon{
+     top: 76%;
+     left: 23%;
+     position:absolute;
+}
+
+/*OUR station icon*/
+.ourIcon{
+     top: 53%;
+     left: 55%;
+     position:absolute;
+}
+
+/*Physics station icon*/
+.physicsIcon{
+     top: 13%;
+     left: 75%;
+     position:absolute;
+}
+
+/*Quezon Hall station icon*/
+.quezonHallIcon{
+     top: 57%;
+     left: 30%;
+     position:absolute;
+}
+
+/*Shopping Center station icon*/
+.shoppingCenterIcon{
+     top: 40%;
+     left: 5%;
+     position:absolute;
+}
+
+/*Vinzon's station icon*/
+.vinzonIcon{
+     top: 6%;
+     left: 30%;
+     position: absolute;
+}
+
+
+/*Home screen pop-up*/
+.homePopUp{
+     left: 20%;
+     right: 20%;
+     bottom: 20%;
+     padding: 0;
+     position: fixed;
+     border-radius: 40px;
+     border-color: #be202d;
+     border-style: solid;
+     border-width: 3px;
+     opacity: 0;
+     pointer-events: none;
+}
+
+/*Station name for pop-up window*/
+.popUpStationName{
+     font-family: "Quicksand";
+     font-size: 20px;
+     font-weight: bold;
+     text-align: center;
+     color: #be202d;
+     width: 100%;
+     position: absolute;
+}
+
+/*Horizontal line under station name*/
+.stationNameHL{
+     top: 20%;
+     position: absolute;
+}
+
+/*Number of bikes available*/
+.popUpBikeAvailable{
+     font-size: 70px;
+     font-weight: bold;
+     text-align: center;
+     width: 100%;
+     top: 25%;
+     position: absolute;
+}
+
+/*"Available" text*/
+.popUpAvailable{
+     font-weight: bold;
+     text-align: center;
+     width: 100%;
+     top: 55%;
+     position: absolute;
+}
+
+/*2nd Horzontal line in reserve pop-up*/
+.reserveHL{
+     top: 70%;
+     position: absolute;
+}
+
+/*Reserve button*/
+.reserveButton{
+     width: 60%;
+     height: 30px;
+     left: 20%;
+     top: 73%;
+     position: absolute;
+     border-radius: 15px;
+}
+
+/*Reserve cancel button*/
+.rCancelButton{
+     width: 60%;
+     height: 30px;
+     left: 20%;
+     top: 87%;
+     position: absolute;
+     border-radius: 15px;
+}
+
+/*Destination lock button*/
+.destinationButton{
+     width: 60%;
+     height: 30px;
+     left: 20%;
+     top: 40%;
+     position: absolute;
+     border-radius: 15px;
+}
+
+/* cancel button*/
+.dCancelButton{
+     width: 60%;
+     height: 30px;
+     left: 20%;
+     top: 60%;
+     position: absolute;
+     border-radius: 15px;
+}
+
+/*User Status Screen*/
+
+/*class for 3 status display*/
+.status{
+     opacity: 0;
+     pointer-events: none;
+}
+
+/*no reservation text*/
+.noBikeReserved{
+     font-size: 70px;
+     font-weight: bold;
+     color: #ffffff;
+     text-align: center;
+     width: 100%;
+     top: 10%;
+     position: absolute;
+}
+
+/*Bike number*/
+.bikeNumber{
+     font-size: 150px;
+     font-weight: bold;
+     color: #ffffff;
+     text-align: center;
+     width: 100%;
+     top: 5%;
+     position: absolute;
+}
+
+/*Bike number text*/
+.bikeNumberText{
+     font-size: 15px;
+     color: #ffffff;
+     text-align: center;
+     width: 100%;
+     top: 45%;
+     position: absolute;
+}
+
+/*Route text*/
+.route{
+     font-size: 25px;
+     color: #ffffff;
+     text-align: center;
+     width: 100%;
+     top: 55%;
+     position: absolute;
+}
+
+/*Unlock button*/
+.unlock{
+     background-color: #be202d;
+     color: #ffffff;
+     border-color: #ffffff;
+     width: 40%;
+     height: 30px;
+     top: 65%;
+     left: 30%;
+     border-radius: 30px;
+     position: absolute;
+}
+
+/*Cancel reservation button*/
+.cancelReserve{
+     background-color: #be202d;
+     color: #ffffff;
+     border-color: #ffffff;
+     width: 40%;
+     height: 30px;
+     top: 75%;
+     left: 30%;
+     border-radius: 30px;
+     position: absolute;
+}
+
+/*Lock button*/
+.lock{
+     background-color: #be202d;
+     color: #ffffff;
+     border-color: #ffffff;
+     width: 40%;
+     height: 30px;
+     top: 70%;
+     left: 30%;
+     border-radius: 30px;
+     position: absolute;
+}
+
+
+
+/*
+Report Screen
+*/
+/*Report screen canvas*/
+.reportCanvas{
+     padding: 5%;
+}
+
+/*Text in report screen*/
+.reportText{
+     color: #ffffff;
+}
+
+/*Bike number textbox*/
+.bikeNumberTextbox{
+     width: 90%;
+     position: relative;
+     margin-bottom: 12px;
+     background-color: #ffffff;
+     border-color: #ffffff;
+}
+
+/*Issue textbox*/
+.issueTextbox{
+     height: 30%;
+     width: 90%;
+     position: relative;
+     margin-bottom: 12px;
+     background-color: #ffffff;
+     border-color: #ffffff;
+}
+
+/*Submit button*/
+.reportSubmit{
+     width: 30%;
+     height: 30px;
+     top: 5%;
+     left: 60%;
+     position: relative;
+     border-color: #ffffff;
+}

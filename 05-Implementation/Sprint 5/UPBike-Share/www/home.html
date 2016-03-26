@@ -1,0 +1,244 @@
+<!--
+
+UP Bike Share - Android App
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2015-2016.
+
+Team S+: Steven Barrozo, Mark Anton Mamac, Jaypee Renz San Gabriel
+
+Screencast: https://youtu.be/Xg039MQwh8g
+
+The MIT License (MIT)
+
+Copyright (c) 2015 upbikeshareandroid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-->
+
+<!--
+
+Code History:
+
+February 25, 2016 - Mark Anton Mamac
+->Home Screen UI
+
+March 11, 2016 - Mark Anton Mamac
+->Placement of station icons
+->Complete Home Screen UI with popups for station icons
+
+March 16, 2016 - Mark Anton Mamac
+->Removed settings icon
+->Script for popup animations
+->Template for scripts
+
+March 26, 2016 - Mark Anton Mamac
+->Additional station icons
+
+-->
+
+<html>
+     <head>
+          <title>Home Screen</title>
+          <script>
+               /*
+               iconClick() function
+               March 16 2016
+
+               Function for displaying reservation popup. Receives reference to function caller for station name.
+               */
+               function iconClick(icon){
+                    /*get the number of bikes available from the database*/
+                    /*
+                    var availableBike=...
+                    var bikeNumber=document.getElementById("bikeNumber");
+                    bikeNumber.innerHTML=availableBike;
+                    */
+
+
+                    /*If there is no reserved bike show the reservation popup*/
+                    /*change the station name based on the clicked icon*/
+                    
+                    var stationName=document.getElementById("rpopUpStationName");
+                    stationName.innerHTML=icon.name;
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity1";
+                    document.getElementById("reservePopUp").style.pointerEvents="auto";
+                    
+
+                    /*Else if there is a reserved bike but the destination is not yet locked, show the destination popup*/
+                    /*change the station name based on the clicked icon*/
+                    /*
+                    var stationName=document.getElementById("dpopUpStationName");
+                    stationName.innerHTML=icon.name;
+                    document.getElementById("destinationPopUp").className="popUp homePopUp changeOpacity1";
+                    document.getElementById("destinationPopUp").style.pointerEvents="auto";
+                    */
+               }
+
+               /*
+               reserve() function
+               March 16, 2016
+
+               Saves the reservation location.
+               */
+               function reserve(){
+                    /*station name*/
+                    var stationName=document.getElementById("reservePopUp").popUpStationName;
+                    /*insert reservation code here*/
+
+                    /*hide reserve popup*/
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity0";
+               }
+
+               /*
+               rcancel() function
+               March 16, 2016
+
+               Hides the reservation popup.
+               */
+               function rcancel(){
+                    /*hide reserve popup*/
+                    document.getElementById("reservePopUp").className="popUp homePopUp changeOpacity0";
+                    document.getElementById("reservePopUp").style.pointerEvents="none";
+               }
+
+               /*
+               lock() function
+               March 16, 2016
+
+               Saves the destination location then completes the reservation using the reservation and destination location and then submit them to server.
+               */
+               function lock(){
+                    /*station name*/
+                    var stationName=document.getElementById("destinationPopUp").popUpStationName;
+
+                    /*insert lock code here*/
+
+                    /*hide reserve popup*/
+                    document.getElementById("destinationPopUp").className="popUp homePopUp changeOpacity0";
+               }
+
+               /*
+               dcancel() function
+               March 16, 2016
+
+               Hides destination popup.
+               */
+               function dcancel(){
+                    /*hide reserve popup*/
+                    document.getElementById("destinationPopUp").className="popUp homePopUp changeOpacity0";
+                    document.getElementById("destinationPopUp").style.pointerEvents="none";
+               }
+          </script>
+     </head>
+     <body>
+          <!--ionic css for preset designs-->
+          <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
+
+          <!--custom css for custom designs and positioning of the objects in html-->
+          <link href="css/style.css" rel="stylesheet">
+
+          <!--canvas-->
+          <div class="canvas">
+               <div class="mapDiv">
+                    <!--UPD Map-->
+                    <img src="img/map.png" alt="UPD Map" class="map">
+                    <!--You may use the id as a parameter for reservation and destination function (choose depending on the state of the current user).-->
+                    <!--AS station icon-->
+                    <img src="img/stationIcon.png" name="AS" alt="AS Station" class="stationIcon asIcon" onclick="iconClick(this)">
+                    <!--CAL station icon-->
+                    <img src="img/stationIcon.png" name="CAL" alt="CAL Station" class="stationIcon calIcon" onclick="iconClick(this)">
+                    <!--Chem station icon-->
+                    <img src="img/stationIcon.png" name="Chem" alt="Chem Station" class="stationIcon chemIcon" onclick="iconClick(this)">
+                    <!--CHK station icon-->
+                    <img src="img/stationIcon.png" name="CHK" alt="CHK Station" class="stationIcon chkIcon" onclick="iconClick(this)">
+                    <!--Engg station icon-->
+                    <img src="img/stationIcon.png" name="Engg" alt="Engg Station" class="stationIcon enggIcon" onclick="iconClick(this)">
+                    <!--EnggLib2 station icon-->
+                    <img src="img/stationIcon.png" name="EnggLib2" alt="EnggLib2 Station" class="stationIcon enggLib2Icon" onclick="iconClick(this)">
+                    <!--Fine Arts station icon-->
+                    <img src="img/stationIcon.png" name="Fine Arts" alt="Fine Arts Station" class="stationIcon fineArtsIcon" onclick="iconClick(this)">
+                    <!--Marine Science station icon-->
+                    <img src="img/stationIcon.png" name="Marine Science" alt="Marine Science Station" class="stationIcon marineScienceIcon" onclick="iconClick(this)">
+                    <!--Math station icon-->
+                    <img src="img/stationIcon.png" name="Math" alt="Math Station" class="stationIcon mathIcon" onclick="iconClick(this)">
+                    <!--Music station icon-->
+                    <img src="img/stationIcon.png" name="Music" alt="Music Station" class="stationIcon musicIcon" onclick="iconClick(this)">
+                    <!--NCPAG station icon-->
+                    <img src="img/stationIcon.png" name="NCPAG" alt="NCPAG Station" class="stationIcon ncpagIcon" onclick="iconClick(this)">
+                    <!--OUR station icon-->
+                    <img src="img/stationIcon.png" name="OUR" alt="OUR Station" class="stationIcon ourIcon" onclick="iconClick(this)">
+                    <!--Physics station icon-->
+                    <img src="img/stationIcon.png" name="Physics" alt="Physics Station" class="stationIcon physicsIcon" onclick="iconClick(this)">
+                    <!--Quezon Hall station icon-->
+                    <img src="img/stationIcon.png" name="Quezon Hall" alt="Quezon Hall Station" class="stationIcon quezonHallIcon" onclick="iconClick(this)">
+                    <!--Shopping Center station icon-->
+                    <img src="img/stationIcon.png" name="Shopping Center" alt="Shopping Center Station" class="stationIcon shoppingCenterIcon" onclick="iconClick(this)">
+                    <!--Vinzon's Hall station icon-->
+                    <img src="img/stationIcon.png" name="Vinzons" alt="Vinzon's Station" class="stationIcon vinzonIcon" onclick="iconClick(this)">
+               </div>
+
+               <!--Menu bar-->
+               <div class="menuBar">
+                    <!---Home button-->
+                    <a href="home.html"><img src="img/home.png" alt="Home Icon" class="menuBarIcon homeIcon"></a>
+                    <!--Bike info button-->
+                    <a href="status.html"><img src="img/bike.png" alt="Bike Icon" class="menuBarIcon bikeIcon"></a>
+                    <!--Report button-->
+                    <a href="report.html"><img src="img/report.png" alt="Report Icon" class="menuBarIcon reportIcon"></a>
+                    <!--Exit button-->
+                    <a href="index.html"><img src="img/exit.png"  alt="Exit Icon" class="menuBarIcon exitIcon"></a>
+               </div>
+
+               <!--Please create a script that will check the current status of the user (no reservation, with reservation but not locked, with reservation and locked) when the user tapped one of the station icons.-->
+
+               <!--Reservation popup-->
+               <div id="reservePopUp" class="popUp homePopUp">
+                    <!--Station name-->
+                    <p id="rpopUpStationName" class="popUpStationName"></p>
+                    <!--Horizontal line-->
+                    <div class="horizontalLine stationNameHL">
+                    </div>
+                    <!--Number of bike available-->
+                    <p id="bikeNumber" class="pNoMargin popUpBikeAvailable">0</p>
+                    <!--"Available"-->
+                    <p class="pNoMargin popUpAvailable">Available</p>
+                    <!--Horizontal line-->
+                    <div class="horizontalLine reserveHL">
+                    </div>
+                    <!--Reserve button-->
+                    <input type="button" name="reserveButton" value="Reserve" onclick="reserve()" class="button reserveButton">
+                    <!--Cancel button-->
+                    <input type="button" name="cancelButton" value="Cancel" onclick="rcancel()" class="button rCancelButton">
+               </div>
+
+               <!--Destination popup-->
+               <div id="destinationPopUp" class="popUp homePopUp">
+                    <p id="dpopUpStationName" class="popUpStationName"></p>
+                    <!--Horizontal line-->
+                    <div class="horizontalLine stationNameHL">
+                    </div>
+                    <!--Destination lock button-->
+                    <input type="button" name="destinationButton" value="Set Destination" onclick="lock()" class="button destinationButton">
+                    <!--Cancel button-->
+                    <input type="button" name="cancelButton" value="Cancel" onclick="dcancel()" class="button dCancelButton">
+               </div>
+          </div>
+     </body>
+</html>

@@ -1,0 +1,167 @@
+<!--
+
+UP Bike Share - Android App
+
+This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science, College of Engineering, University of the Philippines, Diliman for the AY 2015-2016.
+
+Team S+: Steven Barrozo, Mark Anton Mamac, Jaypee Renz San Gabriel
+
+Screencast: https://youtu.be/Xg039MQwh8g
+
+The MIT License (MIT)
+
+Copyright (c) 2015 upbikeshareandroid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-->
+
+<!--
+
+Code History:
+
+March 16, 2016 - Mark Anton Mamac
+->Blank user status screen.
+
+March 26, 2016 - Mark Anton Mamac
+->Status <body>
+->UI part of display(), unlock(), cancelReserve() and lock() function.
+
+-->
+
+<html>
+     <head>
+          <title>User Status Screen</title>
+          <script>
+          function display(){
+               /*if there is no reservation
+
+               document.getElementById("notReserved").className="changeOpacity1";
+               document.getElementById("notReserved").style.pointerEvents="auto";
+               */
+
+               /*else if there is reservation*/
+               //show div reserved
+               document.getElementById("reserved").className="changeOpacity1";
+               document.getElementById("reserved").style.pointerEvents="auto";
+
+               //display route based on reservation
+               //sample value only
+               document.getElementById("rRoute").innerHTML="Vinzons - EnggLib2";
+               
+
+               /*else if unlocked
+               //show div unlocked
+               document.getElementById("unlocked").className="changeOpacity1";
+               document.getElementById("unlocked").style.pointerEvents="auto";
+
+               //display route based on reservation
+               //sample value only
+               document.getElementById("route").innerHTML="Vinzons - EnggLib2";
+               */
+          }
+
+          function unlock(){
+               //hide div reserved
+               document.getElementById("reserved").className="changeOpacity0";
+               document.getElementById("reserved").style.pointerEvents="none";
+
+               //show div unlocked
+               document.getElementById("unlocked").className="changeOpacity1";
+               document.getElementById("unlocked").style.pointerEvents="auto";
+
+               //display route based on reservation
+               //sample value only
+               document.getElementById("uRoute").innerHTML="Vinzons - EnggLib2";
+          }
+
+          function cancelReserve(){
+               //hide div reserved
+               document.getElementById("reserved").className="changeOpacity0";
+               document.getElementById("reserved").style.pointerEvents="none";
+
+               //show div notReserved
+               document.getElementById("notReserved").className="changeOpacity1";
+               document.getElementById("notReserved").style.pointerEvents="auto";
+          }
+
+          function lock(){
+               //hide div unlocked
+               document.getElementById("unlocked").className="changeOpacity0";
+               document.getElementById("unlocked").style.pointerEvents="none";
+
+               //show div reserved
+               document.getElementById("notReserved").className="changeOpacity1";
+               document.getElementById("notReserved").style.pointerEvents="auto";
+          }
+          </script>
+     </head>
+     <body onload="display()">
+          <!--ionic css for preset designs-->
+          <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
+
+          <!--custom css for custom designs and positioning of the objects in html-->
+          <link href="css/style.css" rel="stylesheet">
+
+          <!--canvas-->
+          <div class="canvas">
+               <!--No bike reservation-->
+               <div class="status" id="notReserved">
+                    <!--No Bike Reservation text-->
+                    <p class="pNoMargin noBikeReserved">No<br>Bike<br>Reserved</p>
+               </div>
+               <!--With bike reservation-->
+               <div class="status" id="reserved">
+                    <!--Bike Number-->
+                    <p class="pNoMargin bikeNumber">0</p>
+                    <!--Bike Number text-->
+                    <p class="pNoMargin bikeNumberText">Bike Number</p>
+                    <!--Route-->
+                    <p class="pNoMargin route" id="rRoute"></p>
+                    <!--Unlock button-->
+                    <input type="button" value="Unlock" class="button unlock" onclick="unlock()">
+                    <!--Cancel reservation button-->
+                    <input type="button" value="Cancel Reservation" class="button cancelReserve" onclick="cancelReserve()">
+               </div>
+               <!--Bike Unlocked-->
+               <div  class="status" id="unlocked">
+                    <!--Bike Number-->
+                    <p class="pNoMargin bikeNumber">0</p>
+                    <!--Bike Number text-->
+                    <p class="pNoMargin bikeNumberText">Bike Number</p>
+                    <!--Route-->
+                    <p class="pNoMargin route" id="uRoute"></p>
+                    <!--Lock button-->
+                    <input type="button" value="Lock" class="button lock" onclick="lock()">
+               </div>
+
+               <!--Menu bar-->
+               <div class="menuBar">
+                    <!---Home button-->
+                    <a href="home.html"><img src="img/home.png" alt="Home Icon" class="menuBarIcon homeIcon"></a>
+                    <!--Bike info button-->
+                    <a href="status.html"><img src="img/bike.png" alt="Bike Icon" class="menuBarIcon bikeIcon"></a>
+                    <!--Report button-->
+                    <a href="report.html"><img src="img/report.png" alt="Report Icon" class="menuBarIcon reportIcon"></a>
+                    <!--Exit button-->
+                    <a href="index.html"><img src="img/exit.png"  alt="Exit Icon" class="menuBarIcon exitIcon"></a>
+               </div>
+          </div>
+     </body>
+</html>
